@@ -1,0 +1,1 @@
+This repository provides instructions and Docker configuration files to run Mozilla Firefox inside a Docker container. It includes a Dockerfile that sets up the environment to enable graphical user interface (GUI) forwarding using X11, allowing Firefox to run within the container while displaying on your local machine's desktop.
