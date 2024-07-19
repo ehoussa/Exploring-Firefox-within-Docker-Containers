@@ -1,0 +1,1 @@
+/bin/bash -c "chromium-browser&sleep 2&&xdotool type 'https://www.tiktok.com/link/v2?aid=1988&lang=en&scene=bio_url&target=https://www.youtube.com/watch?v=3PXcVqOX0l8'&&xdotool key Return" --no-sandbox --disable-dev-shm-usage --disable-gpu

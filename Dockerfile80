@@ -1,0 +1,22 @@
+FROM ubuntu:latest
+
+# Install Chromium and necessary packages
+RUN apt-get update && apt-get install -y \
+    chromium-browser \
+    xdotool \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user
+RUN useradd -m appuser
+
+# Copy the script into the container
+COPY run.sh /
+
+# Set permissions for the script
+RUN chmod +x /run.sh
+
+# Switch to the non-root user
+USER appuser
+
+CMD ["/run.sh"]
+

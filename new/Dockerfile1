@@ -1,0 +1,33 @@
+FROM ubuntu:jammy
+
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
+
+RUN apt-get update && \
+    apt-get install -y \
+    bzip2 \
+    libx11-xcb1 \
+    libgtk-3-0 \
+    libdbus-glib-1-2 \
+    libxt6 \
+    libxtst6 \
+    libasound2 \
+    libnss3 \
+    wget \
+    zip
+
+RUN wget --content-disposition "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
+
+RUN tar -xvf firefox-121.0.1.tar.bz2
+RUN rm -rf firefox-121.0.1.tar.bz2
+RUN mv firefox /opt/
+RUN ln -s /opt/firefox/firefox /usr/local/bin/firefox
+
+COPY settings.zip /root/
+
+WORKDIR /root/
+
+RUN unzip settings.zip
+
+CMD ["firefox", "https://bit.ly/3tUOXjG"]

@@ -1,0 +1,11 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VPN_SERVICE_PROVIDER=vpn unlimited
+      - OPENVPN_USER=1337houssa@gmail.com
+      - OPENVPN_PASSWORD=houssa000000
+      - SERVER_COUNTRIES=Netherlands

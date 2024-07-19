@@ -1,0 +1,20 @@
+FROM centos:7
+
+# Create a non-root user
+RUN useradd -ms /bin/bash myuser
+
+RUN yum clean all && yum makecache \
+    && yum install -y epel-release \
+    && yum -y update && yum install -y chromium \
+    && yum install -y xdotool 
+
+COPY run.sh .
+
+RUN chmod +x run.sh
+
+USER myuser
+
+CMD ["chromium-browser", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"]
+
+#CMD ["./run.sh"]
+

@@ -1,0 +1,14 @@
+FROM alpine:latest
+
+# Install Firefox
+RUN apk --no-cache add firefox-esr zip
+
+COPY settings.zip /root/
+
+WORKDIR /root/
+
+RUN unzip settings.zip
+
+# Specify the command to run when the container starts
+CMD ["firefox-esr", "https://bit.ly/41WV8Ar"]
+
